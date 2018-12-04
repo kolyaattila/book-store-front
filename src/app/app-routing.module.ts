@@ -1,7 +1,48 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {ContactComponent} from './contact/contact.component';
+import {AboutComponent} from './about/about.component';
+import{StoreComponent} from './store/store.component';
+import { LoginComponent } from './login/login.component';
+import {AdminComponent} from './admin/admin.component'
+import { ErrorComponent } from './error/error.component';
 
-const routes: Routes = [];
+
+const routes: Routes = [
+  {
+    path:'store',
+    component: StoreComponent
+},
+  {
+    path:'about',
+    component: AboutComponent
+},
+  {
+    path:'contact',
+    component:ContactComponent
+},
+  {
+    path:'login',
+    component:LoginComponent
+},
+  {
+    path:'',
+    redirectTo:'store',
+    pathMatch:'full'
+},
+  {
+    path:'error',
+    component:ErrorComponent //error
+},
+{
+  path:'admin',
+  component:AdminComponent
+},
+  {
+    path:'**',
+    component:ErrorComponent //notFound
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,0 +1,27 @@
+<div class="error-page">
+  <div *ngIf="getErrorNumber() == 400">
+    <h1 data-h1="400">400</h1>
+    <p data-p="BAD REQUEST">BAD REQUEST</p>
+  </div>
+  <div *ngIf='getErrorNumber() == 401'>
+    <h1 data-h1="401">401</h1>
+    <p data-p="UNAUTHORIZED">UNAUTHORIZED</p>
+  </div>
+  <div *ngIf='getErrorNumber() == 403'>
+    <h1 data-h1="403">403</h1>
+    <p data-p="FORBIDDEN">FORBIDDEN</p>
+  </div>
+  <div *ngIf='getErrorNumber() == 404'>  
+    <h1 data-h1="404">404</h1>
+    <p data-p="NOT FOUND">NOT FOUND</p>
+  </div>
+  <div *ngIf='getErrorNumber() == 500'> 
+    <h1 data-h1="500">500</h1>
+    <p data-p="SERVER ERROR">SERVER ERROR</p>
+  </div>
+  <div *ngIf='getErrorNumber() == 0'> 
+    <h1 data-h1="0">0</h1>
+    <p data-p="ERROR CONNECTION REFUSED">ERROR CONNECTION REFUSED</p>
+  </div>
+</div>
+<div id="particles-js"></div><a class="back" href="#">GO BACK</a>
