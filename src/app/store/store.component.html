@@ -23,6 +23,12 @@
           <option value="" disabled selected hidden>Please Choose...</option>
           <option value={{category}} *ngFor="let category of categories">{{category}}</option>
       </select>
+      <h4>Sorted By</h4>
+      <select class="form-control" (change)="onChangeSortedBy($event.target.value)">
+          <option value="" disabled selected hidden>Please Choose...</option>
+          <option value="name">Name</option>
+          <option value="votes">Votes</option>
+      </select>
      <!-- nu marge categoriile -->
 
     </div>
@@ -58,7 +64,7 @@
       </div>
 
       <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of books">
+          <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of visibleBooks">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src={{book.photo}} alt=""></a>
               <div class="card-body">
@@ -66,7 +72,7 @@
                   <a href="#">{{book.name}}</a>
                 </h4>
                 <h5>{{book.price}} Lei</h5>
-                <p class="card-text">{{book.description}}</p>
+                <!-- <p class="card-text">{{book.description}}</p> -->
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>

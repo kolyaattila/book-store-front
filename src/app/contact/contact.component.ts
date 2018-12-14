@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Message} from 'src/app/Message';
 import {MessageService} from 'src/app/message.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { getLocaleDateTimeFormat } from '@angular/common';
 
 
 
@@ -35,18 +36,26 @@ export class ContactComponent implements OnInit {
   
   onSubmit(){
     
-    this.message=this.form.value;
-    
+    this.message= this.form.value;
     this.form.reset();
     this.success="Success";
-    this.message.date=new Date();
+    this.message.date=new Date().toISOString();
     this.message.read=false;
     this.dataMessage.updateMessages(this.message);
     //console.log(this.message);
   }
 
 
+  //    **Message format**
+  //
+  //   id:Number;
+  //   name:String;
+  //   email:String;
+  //   message:String;
+  //   phone:String;
+  //   date:String;
+  //   read:boolean;
  
-  //nu se trimite in baza de date , nu se acceseaza endpoint-ul
+  
 
 }

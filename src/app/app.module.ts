@@ -17,6 +17,7 @@ import { GlobalErrorHandler } from './global-error-handler';
 import { AdminComponent } from './admin/admin.component';
 import {ReactiveFormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { CommonModule } from '@angular/common';
     StoreComponent,
     LoginComponent,
     ErrorComponent,
-    AdminComponent
+    AdminComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

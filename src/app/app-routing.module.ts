@@ -6,7 +6,7 @@ import{StoreComponent} from './store/store.component';
 import { LoginComponent } from './login/login.component';
 import {AdminComponent} from './admin/admin.component'
 import { ErrorComponent } from './error/error.component';
-
+import{ShoppingCartComponent} from './shopping-cart/shopping-cart.component'
 
 const routes: Routes = [
   {
@@ -24,6 +24,10 @@ const routes: Routes = [
   {
     path:'login',
     component:LoginComponent
+},
+  {
+    path:'shopping',
+    component:ShoppingCartComponent
 },
   {
     path:'',

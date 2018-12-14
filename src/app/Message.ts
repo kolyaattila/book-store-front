@@ -4,7 +4,7 @@ export class Message{
     email:String;
     message:String;
     phone:String;
-    date:Date;
+    date:String;
     read:boolean;
 
     constructor(
@@ -13,7 +13,7 @@ export class Message{
         email:String,
         message:String,
         phone:String,
-        date:Date,
+        date:String,
         read:boolean
     ){
         this.id=id;

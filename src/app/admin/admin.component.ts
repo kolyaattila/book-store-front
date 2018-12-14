@@ -3,6 +3,7 @@ import {MessageService} from 'src/app/message.service';
 import {Message} from 'src/app/Message';
 import { CommonModule } from "@angular/common";
 import * as $ from "jquery";
+import { delay } from 'q';
 
 @Component({
   selector: 'bs-admin',
@@ -12,6 +13,7 @@ import * as $ from "jquery";
 export class AdminComponent implements OnInit {
   messages:Message[];
   messageTabelActive:boolean=true;
+  orderTabelActive:boolean=false;
   updateDate:Date;
   rowAddDetail={
     'id':-1,
@@ -28,8 +30,16 @@ export class AdminComponent implements OnInit {
 
   valideMessage(){
     this.messageTabelActive=true;
+    this.orderTabelActive=false;
     this.updateDate=new Date();
-    this.updateDate.getMonth
+    
+  }
+
+  valideOrders(){
+    this.messageTabelActive=false;
+    this.orderTabelActive=true;
+    this.updateDate=new Date();
+    
   }
 
   messageClick(id){
@@ -42,6 +52,12 @@ export class AdminComponent implements OnInit {
   }
 
   addRow(id){
+    
+    this.messages.forEach(element => {
+      if(element.id==id)
+        this.mesageSelected=element;
+    });
+    
     if(this.rowAddDetail.active){
       if(this.rowAddDetail.id==id){
         $('#dataTable > tbody > tr').eq(this.rowAddDetail.id).remove();
@@ -50,18 +66,19 @@ export class AdminComponent implements OnInit {
       }
       else{
         $('#dataTable > tbody > tr').eq(this.rowAddDetail.id).remove();
-        this.dataMessage.getMessage(id).subscribe(data => this.mesageSelected=data);
-        $('#dataTable > tbody > tr').eq(id-1).after('<tr id="append"><td colspan="5"><b>Message:</b>  </td></tr>');
+        $('#dataTable > tbody > tr').eq(id-1).after('<tr id="append"><td colspan="5"><b>Message:</b> ' + this.mesageSelected.message +' </td></tr>');
         this.rowAddDetail.id=id;
       }
 
     }
     else{
-      this.dataMessage.getMessage(id).subscribe(data => this.mesageSelected=data);
-      $('#dataTable > tbody > tr').eq(id-1).after('<tr id="append"><td colspan="5"><b>Message:</b>  </td></tr>');
-      //$('#append > td').append(this.mesageSelected.message.toString());
-      this.rowAddDetail.id=id;
-      this.rowAddDetail.active=true;
+      
+        console.log("haha");
+        $('#dataTable > tbody > tr').eq(id-1).after('<tr id="append"><td colspan="5"><b>Message:</b> ' + this.mesageSelected.message +'</td></tr>');
+        //$('#append > td').append(this.mesageSelected.message.toString());
+        this.rowAddDetail.id=id;
+        this.rowAddDetail.active=true;
+      
     }
   }
 

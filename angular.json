@@ -27,11 +27,11 @@
               "src/assets"
             ],
             "styles": [
-              "C:/Users/Attila/Documents/bookstore-front/node_modules/bootstrap/dist/css/bootstrap.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": [
-              "C:/Users/Attila/Documents/bookstore-front/node_modules/tether/dist/js/tether.js",
-              "C:/Users/Attila/Documents/bookstore-front/node_modules/bootstrap/dist/js/bootstrap.js"
+              "./node_modules/tether/dist/js/tether.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {

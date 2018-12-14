@@ -22,7 +22,7 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Name</label>
-            <input type="text" class="form-control" placeholder="Name" id="name"  formControlName="name" [ngClass]="{'is-invalid':form.get('name').touched && form.get('name').invalid}" >
+            <input type="text" class="form-control" placeholder="Name" id="name"  formControlName="name" [ngClass]="{'is-invalid':form.get('name').touched && form.get('name').invalid }" >
             <div class="invalid-feedback">
               <div>The name is invalid</div>
             </div>
@@ -31,7 +31,7 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Email Address</label>
-            <input type="email" class="form-control" placeholder="Email Address" formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}">
+            <input type="email" class="form-control" placeholder="Email Address" formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid }">
             <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
               <div *ngIf="form.get('email').errors.required">Email is required</div>
               <div *ngIf="form.get('email').errors.email">The email is invalid</div>
@@ -41,7 +41,7 @@
         <div class="control-group">
           <div class="form-group col-xs-12 floating-label-form-group controls">
             <label>Phone Number</label>
-            <input type="tel" class="form-control" placeholder="Phone Number" id="phone" formControlName="phone" [ngClass]="{'is-invalid':form.get('phone').touched && form.get('phone').invalid}">
+            <input type="tel" class="form-control" placeholder="Phone Number" id="phone" formControlName="phone" [ngClass]="{'is-invalid':form.get('phone').touched && form.get('phone').invalid }">
             <div class="invalid-feedback">
               <div>The phone number is invalid</div>
             </div>
@@ -50,15 +50,15 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Message</label>
-            <textarea rows="5" class="form-control" placeholder="Message" id="message" formControlName="message" [ngClass]="{'is-invalid':form.get('message').touched && form.get('message').invalid}"></textarea>
+            <textarea rows="5" class="form-control" placeholder="Message" id="message" formControlName="message" [ngClass]="{'is-invalid':form.get('message').touched && form.get('message').invalid }"></textarea>
             <div class="invalid-feedback">
               <div>Yhe message is invalid </div>
             </div>
           </div>
         </div>
         <br>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary" id="sendMessageButton" [disabled]="!form.valid"  (click)="onSubmit()">Send</button>
+        <div class="form-group" >
+          <button type="submit" class="btn btn-primary "  [disabled]="!form.valid"    (click)="onSubmit()">Send</button>
         </div>
         <div id="success" class="text-success">{{success}}</div>
       </form>
