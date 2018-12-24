@@ -40,7 +40,11 @@ const routes: Routes = [
 },
 {
   path:'admin',
-  component:AdminComponent
+  component:AdminComponent,
+  canActivate: [],
+  data:{
+    expectedRole: 'admin'
+  }
 },
   {
     path:'**',

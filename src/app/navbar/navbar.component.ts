@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,NavigationEnd} from '@angular/router';
-
+import {LoginService} from 'src/app/login-service.service'
+import {RoleGuradService} from 'src/app/role-gurad-service.service'
 @Component({
   selector: 'bs-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +10,7 @@ import {Router,NavigationEnd} from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   currentUrl :String;
-  constructor(private router:Router) {
+  constructor(private router:Router,private loginService : LoginService,private roleGuradService:RoleGuradService) {
     router.events.subscribe((_:NavigationEnd) => this.currentUrl = _.url);
    }
 
