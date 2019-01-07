@@ -22,6 +22,18 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { ToastrModule } from 'ngx-toastr';
+import { JwtModuleOptions, JwtModule } from '@auth0/angular-jwt';
+
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+      tokenGetter: tokenGetter,
+      whitelistedDomains: ['localhost:4200']
+  }
+};
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -43,7 +55,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    JwtModule.forRoot(JWT_Module_Options)
   ],
   providers: [
     //{provide:ErrorHandler, useClass:GlobalErrorHandler}
