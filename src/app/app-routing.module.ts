@@ -6,7 +6,9 @@ import{StoreComponent} from './store/store.component';
 import { LoginComponent } from './login/login.component';
 import {AdminComponent} from './admin/admin.component'
 import { ErrorComponent } from './error/error.component';
-import{ShoppingCartComponent} from './shopping-cart/shopping-cart.component'
+import{ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
+import { RoleGuradService } from './role-gurad-service.service';
+
 
 const routes: Routes = [
   {
@@ -41,10 +43,10 @@ const routes: Routes = [
 {
   path:'admin',
   component:AdminComponent,
-  canActivate: [],
-  data:{
-    expectedRole: 'admin'
-  }
+//  canActivate: [RoleGuradService],
+//  data:{
+//    expectedRole: 'admin'
+ // }
 },
   {
     path:'**',

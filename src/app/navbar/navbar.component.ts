@@ -10,11 +10,13 @@ import {RoleGuradService} from 'src/app/role-gurad-service.service'
 export class NavbarComponent implements OnInit {
 
   currentUrl :String;
-  constructor(private router:Router,private loginService : LoginService,private roleGuradService:RoleGuradService) {
+  constructor(private router:Router,public loginService : LoginService,public roleGuradService:RoleGuradService) {
     router.events.subscribe((_:NavigationEnd) => this.currentUrl = _.url);
    }
-
+   
   ngOnInit() {
+    
+  
   }
 
 }

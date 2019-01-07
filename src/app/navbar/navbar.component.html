@@ -21,16 +21,16 @@
         <li class="nav-item" [class.active]="currentUrl == '/contact'">
           <a class="nav-link" routerLink="contact">Contact</a>
         </li>
-      <li class="nav-item" [class.active]="curentUrl == '/admin'">
+      <li class="nav-item" [class.active]="curentUrl == '/admin'"  *ngIf='!loginService.isAuthenticated()'>
         <a class="nav-link" routerLink="login">Login</a>
       </li>
-      <li class="nav-item" [class.active]="curentUrl == '/admin'">
-        <a class="nav-link" routerLink="admin">Logout</a>
+      <li class="nav-item" [class.active]="curentUrl == '/admin'"  *ngIf='loginService.isAuthenticated()'  >
+        <a class="nav-link" routerLink="">Logout</a>
       </li>
-      <li class="nav-item" *ng-if=git   [class.active]="curentUrl == '/admin'">
+      <li class="nav-item"    [class.active]="curentUrl == '/admin'"   *ngIf='loginService.isAuthenticated()'>
         <a class="nav-link" routerLink="admin">Admin</a>
       </li>
-      <li>
+      <li *ngIf='loginService.isAuthenticated()'>
         <div class="navbar-right">
 					<div  routerLink="shopping" class="container minicart"></div>
 				</div>

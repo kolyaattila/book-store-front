@@ -18,10 +18,16 @@ import { AdminComponent } from './admin/admin.component';
 import {ReactiveFormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { ToastrModule } from 'ngx-toastr';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+
 
 @NgModule({
   declarations: [
@@ -43,7 +49,14 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: []
+      }
+    })
   ],
   providers: [
     //{provide:ErrorHandler, useClass:GlobalErrorHandler}

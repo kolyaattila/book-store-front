@@ -20,8 +20,12 @@ export class LoginService {
   };
 
 
-  login(email:String,password:string){
-    return this.http.post<any>("http://localhost:8080/user/signin",{"email":email,"password":password},this.httpOptions);
+  public login(email:String,password:string){
+    return this.http.post<any>("http://localhost:8080/user/signin",{'email':email,'password':password},this.httpOptions);
+  }
+
+  getToken(){
+    return this.jwtHelper.tokenGetter();
   }
 
 
