@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import {LoginService} from 'src/app/login-service.service'
-import * as jwt_decode from "jwt-decode";
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 @Injectable(
   {providedIn: 'root'}
   )
@@ -13,28 +13,19 @@ export class RoleGuradService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot){
     // this will be passed from the route config
     // on the data property
-    const expectedRole = route.data.expectedRole;
+    if (this.auth.isAuthenticated()){
+      console.log("aici")
+    const expectedRole = route.data.expectedRole;    
+      if(this.auth.isAuthenticatedAs(expectedRole)){
+        console.log("true");
+        return true;
+      }
 
-    const token = this.auth.getToken();
-    
-    // decode the token to get its payload
-    const tokenPayload = this.jwtHelper.decodeToken(token);
-    console.log("haha"+tokenPayload );
-    if (!this.auth.isAuthenticated() || tokenPayload !== expectedRole) {
-      this.router.navigate(['login']);
-      return false;
-    }
-    return true;
   }
+  this.router.navigate(['login']);
+  console.log("siaici");
+  return false;
 
-
-  private getDecodedAccessToken(token: string): any {
-    try{
-        return jwt_decode(token);
-    }
-    catch(Error){
-        return null;
-    }
-  }
+}
 
 }

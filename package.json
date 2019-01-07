@@ -30,10 +30,7 @@
     "ngx-toastr": "^9.1.1",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
-<<<<<<< HEAD
     "toastr": "^2.1.4",
-=======
->>>>>>> a5e2437c9a17e18660641fa72b37210babe1d835
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

@@ -18,7 +18,7 @@ import { AdminComponent } from './admin/admin.component';
 import {ReactiveFormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { JwtModule } from '@auth0/angular-jwt';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
@@ -31,10 +31,6 @@ const JWT_Module_Options: JwtModuleOptions = {
       whitelistedDomains: ['localhost:4200']
   }
 };
-
-export function tokenGetter() {
-  return localStorage.getItem('token');
-}
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -62,17 +58,7 @@ export function tokenGetter() {
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-<<<<<<< HEAD
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8080'],
-        blacklistedRoutes: []
-      }
-    })
-=======
     JwtModule.forRoot(JWT_Module_Options)
->>>>>>> a5e2437c9a17e18660641fa72b37210babe1d835
   ],
   providers: [
     //{provide:ErrorHandler, useClass:GlobalErrorHandler}

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  public static errorNumber =-1;
+  public static errorNumber =404;
 
   constructor() { }
 
