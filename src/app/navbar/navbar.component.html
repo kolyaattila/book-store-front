@@ -27,7 +27,11 @@
       <li class="nav-item" [class.active]="curentUrl == '/admin'"  *ngIf='loginService.isAuthenticated()'  >
         <a class="nav-link" routerLink="">Logout</a>
       </li>
+<<<<<<< HEAD
       <li class="nav-item"    [class.active]="curentUrl == '/admin'"   *ngIf='loginService.isAuthenticated()'>
+=======
+      <li class="nav-item"    [class.active]="curentUrl == '/admin'">
+>>>>>>> a5e2437c9a17e18660641fa72b37210babe1d835
         <a class="nav-link" routerLink="admin">Admin</a>
       </li>
       <li *ngIf='loginService.isAuthenticated()'>

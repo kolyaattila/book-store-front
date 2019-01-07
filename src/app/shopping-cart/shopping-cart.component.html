@@ -1,56 +1,53 @@
-<div class="container text-center row">
-
-  <div class="col-md-5 col-sm-12">
-    <div class="bigcart"></div>
-    <h1>Your shopping cart</h1>
-    <p>
-      This is a free and <b><a href="http://tutorialzine.com/2014/04/responsive-shopping-cart-layout-twitter-bootstrap-3/" title="Read the article!">responsive shopping cart layout, made by Tutorialzine</a></b>. It looks nice on both desktop and mobile browsers. Try it by resizing your window (or opening it on your smartphone and pc).
-    </p>
+<div class="wrap cf">
+  <div class="heading cf">
+    <h1>My Cart</h1>
+    <a href="#" class="continue">Continue Shopping</a>
   </div>
-  
-  <div class="col-md-7 col-sm-12 text-left">
-    <ul>
-      <li class="row list-inline columnCaptions">
-        <span>QTY</span>
-        <span>ITEM</span>
-        <span>Price</span>
-      </li>
-      <li class="row">
-        <span class="quantity">1</span>
-        <span class="itemName">Birthday Cake</span>
-        <span class="popbtn"><a class="arrow"></a></span>
-        <span class="price">$49.95</span>
-      </li>
-      <li class="row">
-        <span class="quantity">50</span>
-        <span class="itemName">Party Cups</span>
-        <span class="popbtn"><a class="arrow"></a></span>
-        <span class="price">$5.00</span>
-      </li>
-      <li class="row">
-        <span class="quantity">20</span>
-        <span class="itemName">Beer kegs</span>
-        <span class="popbtn"><a class="arrow"></a></span>
-        <span class="price">$919.99</span>				
-      </li>
-      <li class="row">
-        <span class="quantity">18</span>
-        <span class="itemName">Pound of beef</span>
-        <span class="popbtn"><a class="arrow"></a></span>
-        <span class="price">$269.45</span>
-      </li>
-      <li class="row">
-        <span class="quantity">1</span>
-        <span class="itemName">Bullet-proof vest</span>
-        <span class="popbtn"  data-parent="#asd" data-toggle="collapse" data-target="#demo"><a class="arrow"></a></span>
-        <span class="price">$450.00</span>				
-      </li>
-      <li class="row totals">
-        <span class="itemName">Total:</span>
-        <span class="price">$1694.43</span>
-        <span class="order"> <a class="text-center">ORDER</a></span>
+  <div class="cart">
+  <ul class="tableHead">
+      <li class="prodHeader">Product</li>
+      <li>Quantity</li>
+      <li>Total</li>
+       <li>Remove</li>
+    </ul>
+    <ul class="cartWrap"  *ngFor="let bookCart of cart.books" >
+      <li class="items ">
+        
+    <div class="infoWrap"> 
+        <div class="cartSection">
+        <img src={{bookCart.book.photo}} alt="" class="itemImg" />
+          <p class="itemNumber">#QUE-007544-002</p>
+          <h3>{{bookCart.book.name}}</h3>
+        
+           <p> <input type="text"  class="qty" placeholder={{bookCart.cantitate}}/> x {{bookCart.book.price}}LEI</p>
+        
+          <p class="stockStatus"> In Stock</p>
+        </div>  
+    
+        
+        <div class="prodTotal cartSection">
+          <p>{{bookCart.book.price * bookCart.cantitate}}LEI</p>
+        </div>
+              <div class="cartSection removeWrap">
+           <a href="#" class="remove">x</a>
+        </div>
+      </div>
       </li>
     </ul>
   </div>
-
+  
+  <div class="promoCode"><label for="promo">Have A Promo Code?</label><input type="text" name="promo" placholder="Enter Code" />
+  <a href="#" class="btn"></a></div>
+  
+  <div class="subtotal cf">
+    <ul>
+      <li class="totalRow"><span class="label">Subtotal</span><span class="value">$35.00</span></li>
+      
+          <li class="totalRow"><span class="label">Shipping</span><span class="value">$5.00</span></li>
+      
+            <li class="totalRow"><span class="label">Tax</span><span class="value">$4.00</span></li>
+            <li class="totalRow final"><span class="label">Total</span><span class="value">$44.00</span></li>
+      <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
+    </ul>
+  </div>
 </div>

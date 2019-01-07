@@ -23,6 +23,18 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { ToastrModule } from 'ngx-toastr';
+import { JwtModuleOptions, JwtModule } from '@auth0/angular-jwt';
+
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+      tokenGetter: tokenGetter,
+      whitelistedDomains: ['localhost:4200']
+  }
+};
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -50,6 +62,7 @@ export function tokenGetter() {
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+<<<<<<< HEAD
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -57,6 +70,9 @@ export function tokenGetter() {
         blacklistedRoutes: []
       }
     })
+=======
+    JwtModule.forRoot(JWT_Module_Options)
+>>>>>>> a5e2437c9a17e18660641fa72b37210babe1d835
   ],
   providers: [
     //{provide:ErrorHandler, useClass:GlobalErrorHandler}
