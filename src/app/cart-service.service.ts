@@ -19,9 +19,19 @@ export class CartService {
         return true;}})){
     }
     else{
-      this.books.push(new BookCart(book,1));
+      this.books.push(new BookCart(book,1,false));
     }
     console.log(this.books);
   }
+
+  remove(book:Book){
+    this.books=this.books.filter(function(element){
+      if(element.book.bookId!=book.bookId)
+        return true;
+      else 
+        return false;
+    });
+  }
+
 
 }

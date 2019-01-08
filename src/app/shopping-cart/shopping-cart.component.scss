@@ -171,7 +171,6 @@ body {
       }
         
         &.stockStatus {
-          color: #82CA9C;
           font-weight: bold;
           padding: .5em 0 0 1em;
           text-transform: uppercase;
@@ -237,6 +236,7 @@ a.remove {
   text-decoration: none;
   font-family: $fontSans;
   color: #ffffff;
+  cursor: pointer;
   font-weight: bold;
   background: #e0e0e0;
   padding: .5em;
@@ -329,7 +329,10 @@ a.remove {
 /* TOTAL AND CHECKOUT  */
 .subtotal {
 float: right;
- width: 35%;
+width: 35%;
+ul li {
+  list-style-type: none;
+  }
   .totalRow {
     padding: .5em;
    text-align: right;

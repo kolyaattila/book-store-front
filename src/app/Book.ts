@@ -4,7 +4,7 @@ export class Book{
     name: String;
     dataPublicari:Date;
     ISBN:String;
-    price:Number;
+    price:number;
     pages:Number;
     category:String;
 
@@ -13,7 +13,7 @@ export class Book{
     name: String,
     dataPublicari:Date,
     ISBN:String,
-    price:Number,
+    price:number,
     pages:Number,
     category:String
   ){

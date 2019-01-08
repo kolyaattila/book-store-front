@@ -27,9 +27,9 @@ export class LoginService {
     return this.http.post<any>("http://localhost:8080/user/signin",{'email':email,'password':password},this.httpOptions);
   }
 
-  getToken(){
-    return this.jwtHelper.tokenGetter();
-  }
+  // getToken(){
+  //   return this.jwtHelper.tokenGetter();
+  // }
 
 
   public isAuthenticated(): boolean {
@@ -39,19 +39,19 @@ export class LoginService {
     // Check whether the token is expired and return
     // true or false
     if(token!=""){
-    console.log("isAuthenticated() ->> "+token);
+    //console.log("isAuthenticated() ->> "+token);
     return !this.jwtHelper.isTokenExpired(token);
     }
     return false;
   }
 
-  public isAuthenticatedAs(role): boolean {
+  public isAuthenticatedAs(role:string): boolean {
 
     const token = localStorage.getItem('token');
     
     // Check whether the token is expired and return
     // true or false
-    if(this.isAuthenticated){
+    if(this.isAuthenticated()){
       var tokenPayload:any = jwt(token);
      if(tokenPayload.roles.find(function(element){
         if(element.authority==role)
@@ -65,11 +65,5 @@ export class LoginService {
     }
   }
   
-
-
-
-
-
-
 
 }

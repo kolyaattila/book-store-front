@@ -23,10 +23,11 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
+    this.toastr.success('','Logout succes');
     console.log("here");
     localStorage.setItem('token',"");
     this.router.navigate(['/']);
-    this.toastr.success('','Logout succes');
+    
   }
 
 }

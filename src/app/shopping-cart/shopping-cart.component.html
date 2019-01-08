@@ -1,7 +1,7 @@
 <div class="wrap cf">
   <div class="heading cf">
     <h1>My Cart</h1>
-    <a href="#" class="continue">Continue Shopping</a>
+    <a routerLink="/" class="continue">Continue Shopping</a>
   </div>
   <div class="cart">
   <ul class="tableHead">
@@ -20,16 +20,16 @@
           <h3>{{bookCart.book.name}}</h3>
         
            <p> <input type="text"  class="qty" placeholder={{bookCart.cantitate}}/> x {{bookCart.book.price}}LEI</p>
-        
-          <p class="stockStatus"> In Stock</p>
+          <p class="stockStatus" style="color: #e83e8c" *ngIf="!bookCart.disponibil"   > Is not in Stock</p>
+          <p class="stockStatus" style="color: #82CA9C" *ngIf="bookCart.disponibil"    > In Stock</p>
         </div>  
     
         
         <div class="prodTotal cartSection">
-          <p>{{bookCart.book.price * bookCart.cantitate}}LEI</p>
+          <p *ngIf="bookCart.disponibil" >{{bookCart.book.price * bookCart.cantitate}}LEI</p>
         </div>
               <div class="cartSection removeWrap">
-           <a href="#" class="remove">x</a>
+           <a (click)="remove(bookCart.book)" class="remove">x</a>
         </div>
       </div>
       </li>
@@ -41,13 +41,10 @@
   
   <div class="subtotal cf">
     <ul>
-      <li class="totalRow"><span class="label">Subtotal</span><span class="value">$35.00</span></li>
-      
-          <li class="totalRow"><span class="label">Shipping</span><span class="value">$5.00</span></li>
-      
-            <li class="totalRow"><span class="label">Tax</span><span class="value">$4.00</span></li>
-            <li class="totalRow final"><span class="label">Total</span><span class="value">$44.00</span></li>
-      <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
+      <li class="totalRow"><span class="label">Subtotal</span><span class="value">{{Totalprice}}LEI</span></li>
+      <li class="totalRow"><span class="label">Shipping</span><span class="value">{{Shipping}}LEI</span></li>
+      <li class="totalRow final"><span class="label">Total</span><span class="value">{{Totalprice+Shipping}}LEI</span></li>
+      <li class="totalRow"><a (click)="Comanda()" class="btn continue">Checkout</a></li>
     </ul>
   </div>
 </div>
