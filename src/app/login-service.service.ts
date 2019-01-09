@@ -64,6 +64,15 @@ export class LoginService {
       }
     }
   }
+
+  getUserId(){
+    if(this.isAuthenticated()){
+    const token = localStorage.getItem('token');
+    var tokenPayload:any = jwt(token);
+    return tokenPayload.jti;
+    }
+  return null;
+  }
   
 
 }

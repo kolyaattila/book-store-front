@@ -26,7 +26,7 @@
     
         
         <div class="prodTotal cartSection">
-          <p *ngIf="bookCart.disponibil" >{{bookCart.book.price * bookCart.cantitate}}LEI</p>
+          <p  >{{bookCart.book.price * bookCart.cantitate}}LEI</p>
         </div>
               <div class="cartSection removeWrap">
            <a (click)="remove(bookCart.book)" class="remove">x</a>

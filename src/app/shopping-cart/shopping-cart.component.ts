@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { InventoryService } from '../inventory-service.service';
 import { BookCart } from '../BookCart';
+import { SellService } from '../sell-service.service';
 
 @Component({
   selector: 'bs-shopping-cart',
@@ -19,25 +20,20 @@ export class ShoppingCartComponent implements OnInit {
               private login:LoginService,
               private toastr:ToastrService,
               private router:Router,
-              private inventory:InventoryService) { }
+              private inventory:InventoryService,
+              private sell:SellService) { }
   Totalprice=0;
   Shipping=5;
   ngOnInit() {
     this.cart.books.forEach(element => {
       this.inventory.checkExistStock(element.book,element.cantitate).subscribe(data => {element.disponibil=data});
     })
-    
     if(this.cart.books.length>0){
-      
       this.Totalprice=0;
       this.Shipping=5;
-      for(var element ; element< this.cart.books.length;element++){
-        
-        if(this.cart.books[element].disponibil==true){
-          this.Totalprice=(this.cart.books[element].cantitate*this.cart.books[element].book.price)+this.Totalprice;
-          
-        }
-      }
+      this.cart.books.forEach(element => {
+          this.Totalprice=(element.cantitate*element.book.price)+this.Totalprice;
+      })
     }
     else{
       this.Totalprice=0;
@@ -56,7 +52,17 @@ export class ShoppingCartComponent implements OnInit {
       this.router.navigate(["/login"]);
     }
     else{
-      console.log(this.cart.books);
+      if(this.cart.books.length<1 || this.cart.books.find(function(element){
+        return !element.disponibil;
+      })){
+        this.toastr.error("Ai produse indisponibil","Eroare comanda");
+      }
+      else{
+        this.sell.sell(this.cart.books);
+        this.toastr.error("","Comanda efectuata");
+        this.router.navigate(['/']); 
+        this.cart.books=[];
+      }
     }
   }
 
