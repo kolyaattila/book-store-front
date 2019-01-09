@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="row main">
+    <div class="panel-heading">
+             <div class="panel-title text-center">
+                 <h1 class="title">Book Strore</h1>
+                 <hr />
+               </div>
+          </div> 
+    <div class="main-login main-center">
+      <form class="form-horizontal" [formGroup]="register"  >
+        
+        <div class="form-group">
+          <label  class="cols-sm-2 control-label">First name</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="first_name"  formControlName="first_name"  placeholder="Enter your first name"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label  class="cols-sm-2 control-label">Last name</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="last_name"   formControlName="last_name" placeholder="Enter your last name "/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="cols-sm-2 control-label">Your email</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="email"  formControlName="email"  placeholder="Enter your Email"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="cols-sm-2 control-label">Phone</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="phone"  formControlName="phone"  placeholder="Enter your phone"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="cols-sm-2 control-label">Your city</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="city"  formControlName="city"  placeholder="Enter your city"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="cols-sm-2 control-label">Your country</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="country"  formControlName="country"  placeholder="Enter your country"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="cols-sm-2 control-label">Your address</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="address"  formControlName="address"  placeholder="Enter your address"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="cols-sm-2 control-label">Your zipcode</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="zipcode"  formControlName="zipcode"  placeholder="Enter your zipcode"/>
+            </div>
+          </div>
+        </div>
+
+
+
+        
+
+        <div class="form-group">
+          <label  class="cols-sm-2 control-label">Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="password"  formControlName="password" placeholder="Enter your Password"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label  class="cols-sm-2 control-label">Confirm Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="confirm" formControlName="confirm_password"  placeholder="Confirm your Password"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+        </div>
+        <div class="login-register">
+                <a >Login</a>
+             </div>
+      </form>
+    </div>
+  </div>
+</div>

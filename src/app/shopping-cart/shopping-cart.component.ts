@@ -32,10 +32,8 @@ export class ShoppingCartComponent implements OnInit {
       this.Totalprice=0;
       this.Shipping=5;
       for(var element ; element< this.cart.books.length;element++){
-        
         if(this.cart.books[element].disponibil==true){
           this.Totalprice=(this.cart.books[element].cantitate*this.cart.books[element].book.price)+this.Totalprice;
-          
         }
       }
     }
