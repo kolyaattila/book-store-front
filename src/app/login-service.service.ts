@@ -69,6 +69,7 @@ export class LoginService {
     if(this.isAuthenticated()){
     const token = localStorage.getItem('token');
     var tokenPayload:any = jwt(token);
+    console.log(tokenPayload);
     return tokenPayload.jti;
     }
   return null;

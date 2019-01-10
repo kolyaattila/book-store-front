@@ -20,15 +20,23 @@ export class SellService {
   };
 
 
-   public sell(bookCart:Array<BookCart>){
-      var date =  new Date();
-      this.http.post("http://localhost:8080/sell",{"date":date,"user_id":this.login.getUserId()},this.httpOptions).subscribe(data => this.sellObject=data );
-      
-    bookCart.forEach(element => {
+  
+  
+  addIventary(bookCart:Array<BookCart>){
+    this.sell().subscribe( sellObject => {
+      this.sellObject=sellObject;
+      bookCart.forEach(element => {
       for(var i=0;i<element.cantitate;i++){
-        this.http.post("http://localhost:8080/"+this.sellObject.sell_id,element.book,this.httpOptions).subscribe();
+        console.log(element.book);
+        this.http.post("http://localhost:8080/inventory/sell/"+this.sellObject.sellId,element.book,this.httpOptions).subscribe();
       }
+      });
     });
-   }
+  }
+  
+  private sell(){
+     return  this.http.get("http://localhost:8080/sell/"+this.login.getUserId()); 
+  }
+
 
 }

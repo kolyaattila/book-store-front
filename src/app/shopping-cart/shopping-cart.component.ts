@@ -58,7 +58,7 @@ export class ShoppingCartComponent implements OnInit {
         this.toastr.error("Ai produse indisponibil","Eroare comanda");
       }
       else{
-        this.sell.sell(this.cart.books);
+        this.sell.addIventary(this.cart.books);
         this.toastr.error("","Comanda efectuata");
         this.router.navigate(['/']); 
         this.cart.books=[];
