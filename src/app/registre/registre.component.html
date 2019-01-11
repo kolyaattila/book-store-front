@@ -1,124 +1,161 @@
 <div class="container">
-  <div class="row main">
+  <div class=" main">
     <div class="panel-heading">
              <div class="panel-title text-center">
                  <h1 class="title">Book Strore</h1>
                  <hr />
                </div>
           </div> 
-    <div class="main-login main-center">
+    <div class="main-login  cols-sm-10" >
       <form class="form-horizontal" [formGroup]="register"  >
-        
-        <div class="form-group">
+        <div row style="padding: 50px">
+        <div class="form-group col-sm-6" style="display: inline-block">
           <label  class="cols-sm-2 control-label">First name</label>
+          
           <div class="cols-sm-10">
+              <span style="font-size:10px"></span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="first_name"  formControlName="first_name"  placeholder="Enter your first name"/>
+              
+              <span class="input-group-addon"><i class="fa fa-user fa " aria-hidden="true" [ngClass]="{'text-danger':register.get('first_name').touched && register.get('first_name').invalid }"></i></span>
+              <input type="text" class="form-control" name="first_name" [ngClass]="{'is-invalid':register.get('first_name').touched && register.get('first_name').invalid }" formControlName="first_name"  placeholder="Enter your first name"/>
+              <div class="invalid-feedback">
+                  <div>First name is invalid </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-sm-6" style="display: inline-block">
           <label  class="cols-sm-2 control-label">Last name</label>
           <div class="cols-sm-10">
+              <span style="font-size:10px"></span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="last_name"   formControlName="last_name" placeholder="Enter your last name "/>
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true" [ngClass]="{'text-danger':register.get('last_name').touched && register.get('last_name').invalid }"></i></span>
+              <input type="text" class="form-control" name="last_name" [ngClass]="{'is-invalid':register.get('last_name').touched && register.get('last_name').invalid }"   formControlName="last_name" placeholder="Enter your last name "/>
+              <div class="invalid-feedback">
+                  <div>LAst name is invalid </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-sm-6" style="display: inline-block">
           <label class="cols-sm-2 control-label">Your email</label>
           <div class="cols-sm-10">
+              <span style="font-size:10px"></span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="email"  formControlName="email"  placeholder="Enter your Email"/>
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true" [ngClass]="{'text-danger':register.get('email').touched && register.get('email').invalid }"></i></span>
+              <input type="text" class="form-control" name="email" [ngClass]="{'is-invalid':register.get('email').touched && register.get('email').invalid }" formControlName="email"  placeholder="Enter your Email"/>
+              <div class="invalid-feedback">
+                  <div>Email is invalid </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group  col-sm-6" style="display: inline-block">
           <label class="cols-sm-2 control-label">Phone</label>
           <div class="cols-sm-10">
+              <span style="font-size:10px"></span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="phone"  formControlName="phone"  placeholder="Enter your phone"/>
+              <span class="input-group-addon"><i class="fas fa-phone" aria-hidden="true" [ngClass]="{'text-danger':register.get('phone').touched && register.get('phone').invalid }"></i></span>
+              <input type="text" class="form-control" name="phone" [ngClass]="{'is-invalid':register.get('phone').touched && register.get('phone').invalid }" formControlName="phone"  placeholder="Enter your phone"/>
+              <div class="invalid-feedback">
+                  <div>Phone number is invalid </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-sm-6" style="display: inline-block" >
           <label class="cols-sm-2 control-label">Your city</label>
           <div class="cols-sm-10">
+              <span style="font-size:10px"></span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="city"  formControlName="city"  placeholder="Enter your city"/>
+              <span class="input-group-addon"><i class="fas fa-city" aria-hidden="true" [ngClass]="{'text-danger':register.get('city').touched && register.get('city').invalid }"></i></span>
+              <input type="text" class="form-control" name="city" [ngClass]="{'is-invalid':register.get('city').touched && register.get('city').invalid }" formControlName="city"  placeholder="Enter your city"/>
+              <div class="invalid-feedback">
+                  <div>City is invalid </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-sm-6" style="display: inline-block" >
           <label class="cols-sm-2 control-label">Your country</label>
           <div class="cols-sm-10">
+              <span style="font-size:10px"></span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="country"  formControlName="country"  placeholder="Enter your country"/>
+              <span class="input-group-addon"><i class="fas fa-flag" aria-hidden="true" [ngClass]="{'text-danger':register.get('country').touched && register.get('country').invalid }"></i></span>
+              <input type="text" class="form-control" name="country" [ngClass]="{'is-invalid':register.get('country').touched && register.get('country').invalid }"  formControlName="country"  placeholder="Enter your country"/>
+              <div class="invalid-feedback">
+                  <div>Country is invalid </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-sm-6" style="display: inline-block">
           <label class="cols-sm-2 control-label">Your address</label>
           <div class="cols-sm-10">
+              <span style="font-size:10px" class="invalid-feedback">fsf</span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="address"  formControlName="address"  placeholder="Enter your address"/>
+              <span class="input-group-addon"><i class="fas fa-map-marker-alt" aria-hidden="true" [ngClass]="{'text-danger':register.get('address').touched && register.get('address').invalid }"></i></span>
+              <input type="text" class="form-control" name="address" [ngClass]="{'is-invalid':register.get('address').touched && register.get('address').invalid }" formControlName="address"  placeholder="Enter your address"/>
+              <div class="invalid-feedback">
+                  <div>Address is invalid </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-sm-6" style="display: inline-block" >
           <label class="cols-sm-2 control-label">Your zipcode</label>
           <div class="cols-sm-10">
+              <span style="font-size:10px" class="invalid-feedback" > haha</span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="zipcode"  formControlName="zipcode"  placeholder="Enter your zipcode"/>
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true" [ngClass]="{'text-danger':register.get('zipcode').touched && register.get('zipcode').invalid }"></i></span>
+              <input type="text" class="form-control" name="zipcode" [ngClass]="{'is-invalid ':register.get('zipcode').touched && register.get('zipcode').invalid }" formControlName="zipcode"  placeholder="Enter your zipcode"/>
+              <div class="invalid-feedback">
+                  <div>Zip codes is invalid </div>
+                </div>
             </div>
           </div>
         </div>
 
-
-
-        
-
-        <div class="form-group">
+        <div class="form-group col-sm-6" style="display: inline-block" >
           <label  class="cols-sm-2 control-label">Password</label>
           <div class="cols-sm-10">
+              <span style="font-size:10px" class="invalid-feedback" > haha</span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="password" class="form-control" name="password"  formControlName="password" placeholder="Enter your Password"/>
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true" [ngClass]="{'text-danger':register.get('password').touched && register.get('password').invalid }"></i></span>
+              <input type="password" class="form-control" name="password" [ngClass]="{'is-invalid':register.get('password').touched && register.get('password').invalid }"  formControlName="password" placeholder="Enter your Password"/>
+              <div class="invalid-feedback">
+                  <div>Password is invalid </div>
+                  <div>Password don't match </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-sm-6"  style="display: inline-block"> 
           <label  class="cols-sm-2 control-label">Confirm Password</label>
           <div class="cols-sm-10">
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="password" class="form-control" name="confirm" formControlName="confirm_password"  placeholder="Confirm your Password"/>
+              <span class="input-group-addon"><i  class="fa fa-lock fa-lg" aria-hidden="true"  [ngClass]="{'text-danger':register.get('confirm_password').touched && register.get('confirm_password').invalid }"></i></span >
+              <input type="password" class="form-control" [ngClass]="{'is-invalid':register.get('confirm_password').touched && register.get('confirm_password').invalid }" name="confirm" formControlName="confirm_password"  placeholder="Confirm your Password"/>
+              <div class="invalid-feedback">
+                  <div>Password is invalid </div>
+                  <div>Password don't match </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group ">
-          <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+        <div class="form-group" class="col-sm-5 main-center" >
+          <button (click)="submit()" [disabled]="!register.valid"  type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
         </div>
-        <div class="login-register">
-                <a >Login</a>
-             </div>
+      </div>
       </form>
     </div>
   </div>

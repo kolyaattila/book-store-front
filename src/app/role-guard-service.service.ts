@@ -6,7 +6,7 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
 @Injectable(
   {providedIn: 'root'}
   )
-export class RoleGuradService implements CanActivate {
+export class RoleGuardService implements CanActivate {
 
   constructor(public auth: LoginService, public router: Router,public jwtHelper: JwtHelperService) {}
 

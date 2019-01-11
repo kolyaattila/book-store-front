@@ -59,7 +59,7 @@ export class ShoppingCartComponent implements OnInit {
       }
       else{
         this.sell.addIventary(this.cart.books);
-        this.toastr.error("","Comanda efectuata");
+        this.toastr.success("","Comanda efectuata");
         this.router.navigate(['/']); 
         this.cart.books=[];
       }

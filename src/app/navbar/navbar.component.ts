@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,NavigationEnd} from '@angular/router';
 import {LoginService} from 'src/app/login-service.service'
-import {RoleGuradService} from 'src/app/role-gurad-service.service'
+import {RoleGuardService} from 'src/app/role-guard-service.service'
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'bs-navbar',
@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   currentUrl :String;
   constructor(private router:Router,
               public loginService : LoginService,
-              public roleGuradService:RoleGuradService,
+              public roleGuradService:RoleGuardService,
               private toastr:ToastrService) {
     router.events.subscribe((_:NavigationEnd) => this.currentUrl = _.url);
    }

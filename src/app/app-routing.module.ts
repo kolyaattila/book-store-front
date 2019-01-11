@@ -7,8 +7,11 @@ import { LoginComponent } from './login/login.component';
 import {AdminComponent} from './admin/admin.component'
 import { ErrorComponent } from './error/error.component';
 import{ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
-import { RoleGuradService } from './role-gurad-service.service';
+import { RoleGuardService } from './role-guard-service.service';
 import { RegistreComponent } from './registre/registre.component';
+import { CanActivate } from '@angular/router/src/utils/preactivation';
+import { LoginService } from './login-service.service';
+import { AuthGuardService } from './auth-guard-service.service';
 
 
 
@@ -27,7 +30,8 @@ const routes: Routes = [
 },
   {
     path:'login',
-    component:LoginComponent
+    component:LoginComponent,
+    canActivate:[AuthGuardService]
 },
   {
     path:'shopping',
@@ -44,12 +48,13 @@ const routes: Routes = [
 },
 {
   path:'registre',
-  component:RegistreComponent
+  component:RegistreComponent,
+  canActivate:[AuthGuardService]
 },
 {
   path:'admin',
   component:AdminComponent,
-  canActivate: [RoleGuradService],
+  canActivate: [RoleGuardService],
   data:{
     expectedRole: 'admin'
   }
