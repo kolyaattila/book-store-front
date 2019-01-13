@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../login-service.service';
 
 @Component({
   selector: 'bs-registre',
@@ -9,27 +11,33 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RegistreComponent implements OnInit {
   register = new FormGroup({
     email: new FormControl('',[Validators.email,Validators.required]),
-    password: new FormControl('',[Validators.required,Validators.minLength(7),Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z])")]),
-    last_name: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.minLength(3)]),
-    first_name: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.minLength(3)]),
-    confirm_password :new FormControl('',[Validators.required,Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'),Validators.minLength(7)]),
+    password: new FormControl('',[Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),Validators.required,Validators.minLength(7)]),
+    lastName: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.minLength(3)]),
+    firstName: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.minLength(3)]),
+    confirm_password :new FormControl('',[Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),Validators.required,Validators.minLength(7)]),
     address:new FormControl('',[Validators.minLength(5),Validators.required]),
     city:new FormControl('',[Validators.minLength(3),Validators.pattern('^[a-zA-Z]+$'),Validators.required]),
-    phone: new FormControl('',[Validators.minLength(9),Validators.pattern('^[0-9-+s()]*$'),Validators.required,Validators.maxLength(12)]),
+    phone: new FormControl('',[Validators.pattern('^[0-9-+s()]*$'),Validators.minLength(9),,Validators.required,Validators.maxLength(12)]),
     country: new FormControl('',[Validators.minLength(3),Validators.pattern('^[a-zA-Z]+$'),Validators.required]),
-    zipcode:new FormControl('',[Validators.minLength(6),Validators.pattern('^[0-9-+()]*$'),Validators.required])
+    zipCode:new FormControl('',[Validators.minLength(6),Validators.pattern('^[0-9-+()]*$'),Validators.required])
   });
-  constructor() { }
+  constructor(private toastr:ToastrService,private signup:LoginService) { }
 
   ngOnInit() {
   }
 
   submit(){
-    console.log("hahas")
-    if(this.register.valid)
-      console.log(this.register.value);
+    if(this.register.valid  && this.register.get('password').value==this.register.get('confirm_password').value)
+      this.signup.signup(this.register.value).subscribe(
+        (data) => {
+          this.toastr.success('','Account was created');
+        },
+        (err) => {
+            this.toastr.error('','Error create account');
+        }
+      );
     else
-      console.log(this.register.value)
+      this.toastr.error('','Invalid data')
   }
 
 }

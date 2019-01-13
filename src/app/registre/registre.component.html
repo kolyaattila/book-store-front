@@ -16,8 +16,8 @@
               <span style="font-size:10px"></span>
             <div class="input-group">
               
-              <span class="input-group-addon"><i class="fa fa-user fa " aria-hidden="true" [ngClass]="{'text-danger':register.get('first_name').touched && register.get('first_name').invalid }"></i></span>
-              <input type="text" class="form-control" name="first_name" [ngClass]="{'is-invalid':register.get('first_name').touched && register.get('first_name').invalid }" formControlName="first_name"  placeholder="Enter your first name"/>
+              <span class="input-group-addon"><i class="fa fa-user fa " aria-hidden="true" [ngClass]="{'text-danger':register.get('firstName').touched && register.get('firstName').invalid }"></i></span>
+              <input type="text" class="form-control" name="first_name" [ngClass]="{'is-invalid':register.get('firstName').touched && register.get('firstName').invalid }" formControlName="firstName"  placeholder="Enter your first name"/>
               <div class="invalid-feedback">
                   <div>First name is invalid </div>
                 </div>
@@ -30,10 +30,10 @@
           <div class="cols-sm-10">
               <span style="font-size:10px"></span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true" [ngClass]="{'text-danger':register.get('last_name').touched && register.get('last_name').invalid }"></i></span>
-              <input type="text" class="form-control" name="last_name" [ngClass]="{'is-invalid':register.get('last_name').touched && register.get('last_name').invalid }"   formControlName="last_name" placeholder="Enter your last name "/>
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true" [ngClass]="{'text-danger':register.get('lastName').touched && register.get('lastName').invalid }"></i></span>
+              <input type="text" class="form-control" name="last_name" [ngClass]="{'is-invalid':register.get('lastName').touched && register.get('lastName').invalid }"   formControlName="lastName" placeholder="Enter your last name "/>
               <div class="invalid-feedback">
-                  <div>LAst name is invalid </div>
+                  <div>Last name is invalid </div>
                 </div>
             </div>
           </div>
@@ -98,7 +98,7 @@
         <div class="form-group col-sm-6" style="display: inline-block">
           <label class="cols-sm-2 control-label">Your address</label>
           <div class="cols-sm-10">
-              <span style="font-size:10px" class="invalid-feedback">fsf</span>
+              
             <div class="input-group">
               <span class="input-group-addon"><i class="fas fa-map-marker-alt" aria-hidden="true" [ngClass]="{'text-danger':register.get('address').touched && register.get('address').invalid }"></i></span>
               <input type="text" class="form-control" name="address" [ngClass]="{'is-invalid':register.get('address').touched && register.get('address').invalid }" formControlName="address"  placeholder="Enter your address"/>
@@ -114,8 +114,8 @@
           <div class="cols-sm-10">
               <span style="font-size:10px" class="invalid-feedback" > haha</span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true" [ngClass]="{'text-danger':register.get('zipcode').touched && register.get('zipcode').invalid }"></i></span>
-              <input type="text" class="form-control" name="zipcode" [ngClass]="{'is-invalid ':register.get('zipcode').touched && register.get('zipcode').invalid }" formControlName="zipcode"  placeholder="Enter your zipcode"/>
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true" [ngClass]="{'text-danger':register.get('zipCode').touched && register.get('zipCode').invalid }"></i></span>
+              <input type="text" class="form-control" name="zipcode" [ngClass]="{'is-invalid ':register.get('zipCode').touched && register.get('zipCode').invalid }" formControlName="zipCode"  placeholder="Enter your zipcode"/>
               <div class="invalid-feedback">
                   <div>Zip codes is invalid </div>
                 </div>
@@ -128,11 +128,18 @@
           <div class="cols-sm-10">
               <span style="font-size:10px" class="invalid-feedback" > haha</span>
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true" [ngClass]="{'text-danger':register.get('password').touched && register.get('password').invalid }"></i></span>
-              <input type="password" class="form-control" name="password" [ngClass]="{'is-invalid':register.get('password').touched && register.get('password').invalid }"  formControlName="password" placeholder="Enter your Password"/>
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true" [ngClass]="{'text-danger':register.get('password').touched && register.get('password').invalid || register.get('password').value!=register.get('confirm_password').value && register.get('password').touched }"></i></span>
+              <input type="password" class="form-control" name="password" [ngClass]="{'is-invalid':register.get('password').touched && register.get('password').invalid || register.get('password').value!=register.get('confirm_password').value  && register.get('password').touched}"  formControlName="password" placeholder="Enter your Password"/>
               <div class="invalid-feedback">
-                  <div>Password is invalid </div>
-                  <div>Password don't match </div>
+                  <div *ngIf="register.get('password').invalid">Password is invalid, have to contain:
+                    <ul>
+                      <li>Lowercase letters,</li>
+                      <li>Uppercase letters,</li>
+                      <li>Numbers,</li>
+                      <li>Special characters</li>
+                    </ul>
+                  </div>
+                  <div *ngIf="register.get('password').value!=register.get('confirm_password').value">Password don't match </div>
                 </div>
             </div>
           </div>
@@ -142,18 +149,25 @@
           <label  class="cols-sm-2 control-label">Confirm Password</label>
           <div class="cols-sm-10">
             <div class="input-group">
-              <span class="input-group-addon"><i  class="fa fa-lock fa-lg" aria-hidden="true"  [ngClass]="{'text-danger':register.get('confirm_password').touched && register.get('confirm_password').invalid }"></i></span >
-              <input type="password" class="form-control" [ngClass]="{'is-invalid':register.get('confirm_password').touched && register.get('confirm_password').invalid }" name="confirm" formControlName="confirm_password"  placeholder="Confirm your Password"/>
+              <span class="input-group-addon"><i  class="fa fa-lock fa-lg" aria-hidden="true"  [ngClass]="{'text-danger':register.get('confirm_password').touched && register.get('confirm_password').invalid || register.get('password').value!=register.get('confirm_password').value && register.get('confirm_password').touched}"></i></span >
+              <input type="password" class="form-control" [ngClass]="{'is-invalid':register.get('confirm_password').touched && register.get('confirm_password').invalid || register.get('password').value!=register.get('confirm_password').value && register.get('confirm_password').touched }" name="confirm" formControlName="confirm_password"  placeholder="Confirm your Password"/>
               <div class="invalid-feedback">
-                  <div>Password is invalid </div>
-                  <div>Password don't match </div>
+                  <div *ngIf="register.get('confirm_password').invalid">Password is invalid, have to contain:
+                    <ul>
+                      <li>Lowercase letters,</li>
+                      <li>Uppercase letters,</li>
+                      <li>Numbers,</li>
+                      <li>Special characters</li>
+                    </ul>
+                  </div>
+                  <div *ngIf="register.get('password').value!=register.get('confirm_password').value">Password don't match </div>
                 </div>
             </div>
           </div>
         </div>
 
         <div class="form-group" class="col-sm-5 main-center" >
-          <button (click)="submit()" [disabled]="!register.valid"  type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+          <button (click)="submit()" [disabled]="!register.valid || (register.get('password').value!=register.get('confirm_password').value || !register.get('confirm_password').touched || !register.get('password').touched)"  type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
         </div>
       </div>
       </form>
