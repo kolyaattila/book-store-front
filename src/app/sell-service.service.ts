@@ -33,9 +33,13 @@ export class SellService {
       });
     });
   }
+
+  getSales(){
+    return this.http.get("http://localhost:8080/sell/sales");
+  }
   
   private sell(){
-     return  this.http.get("http://localhost:8080/sell/"+this.login.getUserId()); 
+     return  this.http.get("http://localhost:8080/sell/user/"+this.login.getUserId()); 
   }
 
 

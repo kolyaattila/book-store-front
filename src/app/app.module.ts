@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModuleOptions, JwtModule } from '@auth0/angular-jwt';
 import { RegistreComponent } from './registre/registre.component';
+import { AdminSellDetailsComponent } from './admin-sell-details/admin-sell-details.component';
 
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
@@ -45,7 +46,8 @@ export function tokenGetter() {
     ErrorComponent,
     AdminComponent,
     ShoppingCartComponent,
-    RegistreComponent
+    RegistreComponent,
+    AdminSellDetailsComponent
   ],
   imports: [
     BrowserModule,

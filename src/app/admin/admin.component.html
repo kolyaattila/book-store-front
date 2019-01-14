@@ -112,23 +112,19 @@
           <i class="fas fa-table"></i>
           Data Table Example</div>
         <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" *ngIf="messageTabelActive">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Date</th>
-                  <th>Message</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-              </tbody>
-            </table>
+          
+            <div calss="row" >
+              <div class="col-sm-3"  style="display: inline-block">
+                <ul  styles="overflow:hidden; overflow-y:scroll;height:10px">
+                  <li *ngFor="let sell of sales " (click)="selectUser(sell.user,sell.inventoryEntityList)"  >{{sell.sellId}}</li>
+                </ul>
+              </div>
+              <div class="col-sm-8" style="display: inline-block">
+                  <bs-admin-sell-details [sellDetalis]="sellDetalis" ></bs-admin-sell-details>
+              </div>
+            </div>
           </div>
-        </div>
+
         <div class="card-footer small text-muted" *ngIf="messageTabelActive" >Last update {{updateDate | date: 'dd/MM/yyyy HH:mm' }} </div>
       </div>
 

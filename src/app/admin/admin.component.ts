@@ -4,6 +4,7 @@ import {Message} from 'src/app/Message';
 import { CommonModule } from "@angular/common";
 import * as $ from "jquery";
 import { delay } from 'q';
+import { SellService } from '../sell-service.service';
 
 @Component({
   selector: 'bs-admin',
@@ -12,6 +13,7 @@ import { delay } from 'q';
 })
 export class AdminComponent implements OnInit {
   messages:Message[];
+  sales:any;
   messageTabelActive:boolean=true;
   orderTabelActive:boolean=false;
   updateDate:Date;
@@ -20,12 +22,20 @@ export class AdminComponent implements OnInit {
     'active':false
   };
   mesageSelected:Message;
+  sellDetalis={
+    user:null,
+    inventoryEntityList:[],
+    active:false
+  }
 
-  constructor(private dataMessage: MessageService) { }
+
+
+  constructor(private dataMessage: MessageService,private sell:SellService) { }
 
   ngOnInit() {
     this.dataMessage.getMessages().subscribe(data => this.messages=data);
     this.updateDate=new Date();
+    this.sell.getSales().subscribe(data => this.sales=data);
   }
 
   valideMessage(){
@@ -81,5 +91,12 @@ export class AdminComponent implements OnInit {
       
     }
   }
+
+  selectUser(user,inventoryEntityList){
+    this.sellDetalis.active=true;
+    this.sellDetalis.user=user;
+    this.sellDetalis.inventoryEntityList=inventoryEntityList;
+  }
+
 
 }
