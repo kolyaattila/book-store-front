@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../login-service.service';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'bs-registre',
@@ -21,7 +22,7 @@ export class RegistreComponent implements OnInit {
     country: new FormControl('',[Validators.minLength(3),Validators.pattern('^[a-zA-Z]+$'),Validators.required]),
     zipCode:new FormControl('',[Validators.minLength(6),Validators.pattern('^[0-9-+()]*$'),Validators.required])
   });
-  constructor(private toastr:ToastrService,private signup:LoginService) { }
+  constructor(private toastr:ToastrService,private signup:LoginService,private route:Router) { }
 
   ngOnInit() {
   }
@@ -31,6 +32,7 @@ export class RegistreComponent implements OnInit {
       this.signup.signup(this.register.value).subscribe(
         (data) => {
           this.toastr.success('','Account was created');
+          this.route.navigate(['/login']);
         },
         (err) => {
             this.toastr.error('','Error create account');

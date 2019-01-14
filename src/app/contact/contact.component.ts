@@ -3,6 +3,7 @@ import {Message} from 'src/app/Message';
 import {MessageService} from 'src/app/message.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { getLocaleDateTimeFormat } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -22,7 +23,7 @@ export class ContactComponent implements OnInit {
   });
   message:Message;
   success:String;
-  constructor(private dataMessage:MessageService ) { }
+  constructor(private dataMessage:MessageService ,private toastr:ToastrService) { }
 
   ngOnInit() {
     this.form.get('name').setValidators([
@@ -38,7 +39,7 @@ export class ContactComponent implements OnInit {
     
     this.message= this.form.value;
     this.form.reset();
-    this.success="Success";
+    this.toastr.success("","Message sent");
     this.message.date=new Date().toISOString();
     this.message.read=false;
     this.dataMessage.updateMessages(this.message);

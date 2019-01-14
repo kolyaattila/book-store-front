@@ -12,7 +12,7 @@
               <div class="card-body-icon">
                 <i class="fas fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5">26 New Messages!</div>
+              <div class="mr-5"> Messages!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" (click)="valideMessage()">
               <span class="float-left">View Details</span>
@@ -28,7 +28,7 @@
               <div class="card-body-icon">
                 <i class="fas fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">11 New Tasks!</div>
+              <div class="mr-5"> Add books</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" (click)="valideMessage()">
               <span class="float-left">View Details</span>
@@ -44,7 +44,7 @@
               <div class="card-body-icon">
                 <i class="fas fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5">123 New Orders!</div>
+              <div class="mr-5"> Orders!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" (click)="valideOrders()">
               <span class="float-left">View Details</span>
@@ -60,7 +60,7 @@
               <div class="card-body-icon">
                 <i class="fas fa-fw fa-life-ring"></i>
               </div>
-              <div class="mr-5">13 New Tickets!</div>
+              <div class="mr-5">Add inventar!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" (click)="valideMessage()">
               <span class="float-left">View Details</span>
@@ -110,16 +110,16 @@
       <div class="card mb-3" *ngIf="orderTabelActive">
         <div class="card-header">
           <i class="fas fa-table"></i>
-          Data Table Example</div>
+          Orders</div>
         <div class="card-body">
           
             <div calss="row" >
               <div class="col-sm-3"  style="display: inline-block">
                 <ul  styles="overflow:hidden; overflow-y:scroll;height:10px">
-                  <li *ngFor="let sell of sales " (click)="selectUser(sell.user,sell.inventoryEntityList)"  >{{sell.sellId}}</li>
+                  <li *ngFor="let sell of sales " (click)="selectUser(sell.user,sell.inventoryEntityList,sell.date)"  >{{sell.user.firstName}} {{sell.user.lastName}}</li>
                 </ul>
               </div>
-              <div class="col-sm-8" style="display: inline-block">
+              <div class="col-sm-8" style="display: inline-flex">
                   <bs-admin-sell-details [sellDetalis]="sellDetalis" ></bs-admin-sell-details>
               </div>
             </div>

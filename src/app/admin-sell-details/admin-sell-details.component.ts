@@ -10,6 +10,7 @@ export class AdminSellDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.sellDetalis.inventoryEntityList);
   }
 
 }

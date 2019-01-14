@@ -25,7 +25,8 @@ export class AdminComponent implements OnInit {
   sellDetalis={
     user:null,
     inventoryEntityList:[],
-    active:false
+    active:false,
+    date:null
   }
 
 
@@ -92,10 +93,12 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  selectUser(user,inventoryEntityList){
+  selectUser(user,inventoryEntityList,date){
+    
     this.sellDetalis.active=true;
     this.sellDetalis.user=user;
     this.sellDetalis.inventoryEntityList=inventoryEntityList;
+    this.sellDetalis.date=date;
   }
 
 
