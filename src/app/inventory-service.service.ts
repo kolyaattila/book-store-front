@@ -16,8 +16,11 @@ export class InventoryService {
   };
 
   checkExistStock(book:Book,numar:number){
-    console.log("aici");
     return this.http.post<any>("http://localhost:8080/inventory/disponible/"+numar,book,this.httpOptions);
+  }
+
+  addBooks(book,quantity:number){
+    return this.http.post<any>("http://localhost:8080/inventory/addBook/"+quantity,book,this.httpOptions);
   }
 
 

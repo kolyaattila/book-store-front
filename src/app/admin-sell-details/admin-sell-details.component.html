@@ -1,13 +1,20 @@
 <div style="height:400px">
   <div *ngIf="sellDetalis.active">
     <h3>User</h3>
-    <p>{{sellDetalis.user.firstName}} {{sellDetalis.user.lastName}}</p>
+    <p>{{sellDetalis.sell.user.firstName}} {{sellDetalis.sell.user.lastName}}</p>
     <h3>Books</h3>
     <ul>
-      <li *ngFor="let element of sellDetalis.inventoryEntityList "> Name of the book : {{element.book.name}} Price: {{element.book.price}}</li>
+      <li *ngFor="let element of sellDetalis.sell.inventoryEntityList"> Name of the book : {{element.book.name}} Price: {{element.book.price}}</li>
     </ul>
     <h3>Data</h3>
-      <p>{{sellDetalis.date | date: 'dd/MM/yyyy HH:mm' }}</p>
+      <p>{{sellDetalis.sell.date | date: 'dd/MM/yyyy HH:mm' }}</p>
+
+
+    <div *ngIf="!sellDetalis.sell.sellAccepted">
+      <button (click)="acceptCommand(sellDetalis.sell.sellId)" >Accept command</button>
+    </div>
+
+
   </div>
   <div *ngIf="!sellDetalis.active" >
     <p style="text-align:center">Selecteaza o comanda!</p>

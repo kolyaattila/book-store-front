@@ -37,10 +37,14 @@ export class SellService {
   getSales(){
     return this.http.get("http://localhost:8080/sell/sales");
   }
+  acceptCommand(id){
+    return this.http.post("http://localhost:8080/sell/acceptCommand/"+id,null,this.httpOptions);
+  }
   
   private sell(){
      return  this.http.get("http://localhost:8080/sell/user/"+this.login.getUserId()); 
   }
+
 
 
 }

@@ -62,7 +62,7 @@
               </div>
               <div class="mr-5">Add inventar!</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" (click)="valideMessage()">
+            <a class="card-footer text-white clearfix small z-1" (click)="valideInventory()">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fas fa-angle-right"></i>
@@ -74,13 +74,13 @@
 
     
       <!-- DataTables Example -->
-      <div class="card mb-3" *ngIf="messageTabelActive">
+      <div class="card mb-3" *ngIf="ComponentSelected.messageActive">
         <div class="card-header">
           <i class="fas fa-table"></i>
           Messages</div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" *ngIf="messageTabelActive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" *ngIf="ComponentSelected.messageActive">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -107,7 +107,7 @@
         <div class="card-footer small text-muted" *ngIf="messageTabelActive" >Last update {{updateDate | date: ' EEEE HH:mm' }}</div>
       </div>
 
-      <div class="card mb-3" *ngIf="orderTabelActive">
+      <div class="card mb-3" *ngIf="ComponentSelected.orderActive">
         <div class="card-header">
           <i class="fas fa-table"></i>
           Orders</div>
@@ -116,14 +116,45 @@
             <div calss="row" >
               <div class="col-sm-3"  style="display: inline-block">
                 <ul  styles="overflow:hidden; overflow-y:scroll;height:10px">
-                  <li *ngFor="let sell of sales " (click)="selectUser(sell.user,sell.inventoryEntityList,sell.date)"  >{{sell.user.firstName}} {{sell.user.lastName}}</li>
+                  <li *ngFor="let sell of sales " (click)="selectUser(sell)"  >{{sell.user.firstName}} {{sell.user.lastName}}</li>
                 </ul>
               </div>
               <div class="col-sm-8" style="display: inline-flex">
                   <bs-admin-sell-details [sellDetalis]="sellDetalis" ></bs-admin-sell-details>
               </div>
+              <div>
+
+              </div>
             </div>
           </div>
+
+        <div class="card-footer small text-muted" *ngIf="messageTabelActive" >Last update {{updateDate | date: 'dd/MM/yyyy HH:mm' }} </div>
+      </div>
+
+      <div class="card mb-3" *ngIf="ComponentSelected.inventoryActive">
+        <div class="card-header">
+          <i class="fas fa-table"></i>
+          Add inventory</div>
+        <div class="card-body">
+          <form [formGroup]="inventoryFormGroup" >
+            <div class="row">
+              <div class="form-group" class="col-sm-8 " >
+              <h4>Books</h4>
+                <select class="form-control" formControlName="book" >
+                  <option value="" disabled selected hidden>Please Choose...</option>
+                  <option value={{book.bookId}} *ngFor="let book of books">{{book.name}}</option>
+                </select>
+              </div>
+              <div class="form-group" class="col-sm-3 " >
+                <h4>Quantity: </h4>
+                <input type="number" name="quantity" min="0" max="100" formControlName="quantity">
+              </div>
+              <div class="form-group" class="col-sm-3 " style="padding:20px" >
+                  <button (click)="addInventory()"   type="button" class="btn btn-primary btn-lg btn-block login-button">Add inventory</button>
+              </div>
+            </div>
+          </form>
+        </div>
 
         <div class="card-footer small text-muted" *ngIf="messageTabelActive" >Last update {{updateDate | date: 'dd/MM/yyyy HH:mm' }} </div>
       </div>

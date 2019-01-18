@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { SellService } from '../sell-service.service';
 
 @Component({
   selector: 'bs-admin-sell-details',
@@ -7,10 +8,21 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 })
 export class AdminSellDetailsComponent implements OnInit {
   @Input('sellDetalis') sellDetalis;
-  constructor() { }
+  constructor(private selleService:SellService) { }
 
   ngOnInit() {
-    console.log(this.sellDetalis.inventoryEntityList);
+    
+  }
+
+
+  acceptCommand(sellId){
+    this.selleService.acceptCommand(sellId).subscribe(
+      data => {
+        this.sellDetalis.sell.sellAccepted=true;
+      },
+      err => {
+        console.log(err);
+      })
   }
 
 }
